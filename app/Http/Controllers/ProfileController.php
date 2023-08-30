@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -67,18 +68,18 @@ class ProfileController extends Controller
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
 
-        $user = Auth::user();
-        $name = $user->id . '-' . $user->email . '-' . \Carbon\Carbon::now();
-        $user->imagem = public_path('images') . $name;
-        $request->file('image')->move(public_path('images'), $name);
+        if($request->file('image')){
+            $userId = Auth::id();
+            $user = User::find($userId);
+            
+            $file= $request->file('image');
+            $filename= $user->id . '-' . date('YmdHi') . '-' . $file->getClientOriginalName();
+            $file->move(public_path('/images'), $filename);
+            
+            $user->imagem = $filename;
+            $user->save();
+        }
 
-        //$image_path = $request->file('image')->store('image', 'public');
-
-        
-        
-
-        session()->flash('success', 'Image Upload successfully');
-
-        return redirect()->route('image.index');
+        return redirect()->route('dashboard');
     }
 }

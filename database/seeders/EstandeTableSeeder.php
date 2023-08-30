@@ -31,7 +31,7 @@ class EstandeTableSeeder extends Seeder
 
         Estande::create([
             'hashtag' => '#VisãoComputacional',
-            'titulo' => 'Opencv - Computação Gráfica',
+            'titulo' => 'Computação Gráfica',
             'descricao' => 'bla bla bla bla bla...',
             'localizacao' => 'sala 205',
             'texto' => 'bla bla bla bla bla...',
@@ -39,7 +39,7 @@ class EstandeTableSeeder extends Seeder
         
         Estande::create([
             'hashtag' => '#criatividade',
-            'titulo' => 'Projetos Integradores',
+            'titulo' => 'Projeto Integrador',
             'descricao' => 'bla bla bla bla bla...',
             'localizacao' => 'sala 206',
             'texto' => 'bla bla bla bla bla...',

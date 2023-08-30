@@ -18,8 +18,8 @@ class EstandeController extends Controller
     public function validarpresenca($estandeId){
         $estande = Estande::find($estandeId);
         
-        $userId = Auth::user()->id;
-        $user = User::find($userId)->with('estandes')->get()->first();
+        $userId = Auth::id();
+        $user = User::where('id',$userId)->with('estandes')->get()->first();
         $user->estandes()->attach($estande);
 
         return redirect("/estande/$estandeId")->with('status', 'Estande cadastrado com sucesso!');

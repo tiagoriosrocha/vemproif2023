@@ -18,7 +18,7 @@
       ------------------------------------------------------------ 
     -->
     <header class="p-3 mb-3 border-bottom">
-    <div class="container">
+    <div class="container-fluid">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <a class="navbar-brand" href="{{ route('dashboard') }}">
             <img src="logo-pq-sm.png" />
@@ -30,7 +30,7 @@
 
         <div class="dropdown text-end">
           <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="{{ Auth::user()->imagem }}" alt="mdo" width="32" height="32" class="rounded-circle">
+            <img src="/images/{{ Auth::user()->imagem }}" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
           <ul class="dropdown-menu text-small">
             <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Perfil</a></li>
@@ -71,13 +71,21 @@
             <div class="container py-5">
             <i class="bi bi-balloon" style="font-size: 5rem; color: white;"></i>
             <h1 class="mb-4 text-white">Seu Progresso</h1>
-            <p class="col-lg-8 mx-auto lead text-white">
-                Você já visitou <span class="badge bg-white text-black">{{ $listaEstandesVisitadas->count() }}</span> @if($listaEstandesVisitadas->count()>1) estandes. @else estande. @endif Boa Sorte!
+            
+            @if($listaEstandesVisitadas->count() == 0) 
+              <p class="col-lg-8 mx-auto lead text-white">
+                Você ainda não visitou nosso estandes. Não perca tempo! Estamos esperando por você!!!
+              </p>
+            @else 
+            <p class="col-lg-8 mx-auto lead text-white">  
+              Você já visitou <span class="badge bg-white text-black">{{ $listaEstandesVisitadas->count() }}</span> @if($listaEstandesVisitadas->count()>1) estandes. @else estande. @endif Boa Sorte! 
             </p>
-            <br>
-            <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="{{ $listaEstandesVisitadas->count()*100/$listaEstandes->count() }}" aria-valuemin="0" aria-valuemax="100">
+              <br>
+              <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="{{ $listaEstandesVisitadas->count()*100/$listaEstandes->count() }}" aria-valuemin="0" aria-valuemax="100">
                 <div class="progress-bar-striped bg-success text-white" style='width:{{ $listaEstandesVisitadas->count()*100/$listaEstandes->count() }}%'>{{ $listaEstandesVisitadas->count()*100/$listaEstandes->count() }}%</div>
-            </div>
+              </div>
+            @endif              
+            
             </div>
         </div>
         @else
@@ -96,6 +104,7 @@
         </div>
         @endif
     </div>
+    </div>
 
         <!------------------------------------------------------------
           ------------------------------------------------------------
@@ -104,6 +113,7 @@
           ------------------------------------------------------------
           ------------------------------------------------------------ 
         -->
+    <div class="container">
         <div class="row mt-5">
             <div class="col-md-12 mb-5">
                 <h2 class="pb-2 border-bottom">Estandes do #VEMPROIF23</h2>
@@ -126,10 +136,11 @@
             <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('{{ $umEstande->imagem }}');">
             <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
                 <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+                    {{ $umEstande->titulo }}
                     @if($listaEstandesVisitadas->contains($umEstande))
                         <i style="font-size: 2rem; color: lightgreen;" class="bi bi-check-circle-fill"></i>
-                    @endif
-                    {{ $umEstande->titulo }}</h3>
+                    @endif  
+                </h3>
                 <ul class="d-flex list-unstyled mt-auto">
                 <li class="me-auto">
                     

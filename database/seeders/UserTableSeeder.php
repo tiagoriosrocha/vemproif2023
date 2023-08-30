@@ -27,6 +27,14 @@ class UserTableSeeder extends Seeder
         $faker->addProvider(new \Faker\Provider\en_US\Text($faker));
         $faker->addProvider(new \Faker\Provider\Lorem($faker));
         
+        //cria um usuário pra mim
+        $umUsuario = new User();
+        $umUsuario->name = "Tiago Rios da Rocha";
+        $umUsuario->email = 'tiagoriosrocha@gmail.com';
+        $umUsuario->password = Hash::make('password');
+        $umUsuario->imagem = '1-202308302322perfil.jpg';
+        $umUsuario->save();
+        
         //crio 10 usuários no banco
         for($i=0; $i<10; $i++){
             $umUsuario = new User();
@@ -36,12 +44,7 @@ class UserTableSeeder extends Seeder
             $umUsuario->save();
         }
         
-        //cria um usuário pra mim
-        $umUsuario = new User();
-        $umUsuario->name = "Tiago Rios da Rocha";
-        $umUsuario->email = 'tiagoriosrocha@gmail.com';
-        $umUsuario->password = Hash::make('password');
-        $umUsuario->save();
+        
         
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EstandeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SorteioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,8 @@ Route::middleware('auth')->group(function () {
     Route::get('validarpresenca/{id}', [EstandeController::class, 'validarpresenca'])->name('estande.validarpresenca');    
 });
 
+Route::get('/ranking', [SorteioController::class, 'show'])->name('sorteio.ranking');    
+Route::get('/executarsorteio',[SorteioController::class, 'executarSorteio'])->name('sorteio.executar');
 
 
 require __DIR__.'/auth.php';
