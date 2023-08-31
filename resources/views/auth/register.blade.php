@@ -4,7 +4,7 @@
 
         <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('Name*')" />
+            <x-input-label for="name" :value="__('Nome*')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
@@ -26,7 +26,16 @@
         <!-- Cidade -->
         <div class="mt-4">
             <x-input-label for="cidade" :value="__('Cidade')" />
-            <x-text-input id="cidade" class="block mt-1 w-full" type="text" name="cidade" :value="old('cidade')" autocomplete="cidade" />
+            <select id="cidade" class="block mt-1 w-full border-gray-300" name="cidade">
+                <option>Ibirubá</option>    
+                <option>Colorado</option>
+                <option>Espumoso</option>
+                <option>Fortaleza dos Valos</option>
+                <option>Quinze de Novembro</option>
+                <option>Selbach</option>
+                <option>Tapera</option>
+                <option>Outro</option>
+            </select>
             <x-input-error :messages="$errors->get('cidade')" class="mt-2" />
         </div>
 
