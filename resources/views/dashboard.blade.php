@@ -35,7 +35,10 @@
           <ul class="dropdown-menu text-small">
             <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Perfil</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+            <form id="logout-form" action="{{ url('logout') }}" method="POST">
+            {{ csrf_field() }}
+            <li><button class="btn" type="submit">Logout</button></li>
+            </form>
           </ul>
         </div>
       </div>
@@ -113,7 +116,7 @@
           ------------------------------------------------------------
           ------------------------------------------------------------ 
         -->
-    <div class="container">
+    <div id="estandes" class="container">
         <div class="row mt-5">
             <div class="col-md-12 mb-5">
                 <h2 class="pb-2 border-bottom">Estandes do #VEMPROIF23</h2>

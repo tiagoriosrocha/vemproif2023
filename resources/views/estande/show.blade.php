@@ -19,16 +19,29 @@
       ------------------------------------------------------------ 
     -->
     <header class="p-3 mb-3 border-bottom">
-    <div class="container">
+    <div class="container-fluid">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <a class="navbar-brand" href="{{ route('dashboard') }}">
             <img src="/logo-pq-sm.png" />
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="/dashboard" class="nav-link px-2 link-secondary">Dashboard</a></li>
+          <li><a href="#" class="nav-link px-2 link-secondary">Dashboard</a></li>
         </ul>
 
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="/images/{{ Auth::user()->imagem }}" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small">
+            <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Perfil</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <form id="logout-form" action="{{ url('logout') }}" method="POST">
+            {{ csrf_field() }}
+            <li><button class="btn" type="submit">Logout</button></li>
+            </form>
+          </ul>
+        </div>
       </div>
     </div>
   </header>
@@ -100,6 +113,12 @@
                 <p class="pt-1 lh-1 fw-bold">Descrição:</p>
                 <p class="lh-1 fw-bold">{{ $umEstande->texto }}</p>
             </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col mt-3 mb-3 text-center">
+            <a class="btn btn-secondary btn-lg" href="/dashboard#estandes" role="button">Voltar</a>
             </div>
         </div>
   </div>
