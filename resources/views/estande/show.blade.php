@@ -35,6 +35,7 @@
           </a>
           <ul class="dropdown-menu text-small">
             <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Perfil</a></li>
+            <li><a class="dropdown-item" href="{{ route('profile.imageform') }}">Trocar Foto</a></li>
             <li><hr class="dropdown-divider"></li>
             <form id="logout-form" action="{{ url('logout') }}" method="POST">
             {{ csrf_field() }}
