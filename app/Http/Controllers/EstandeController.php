@@ -20,7 +20,11 @@ class EstandeController extends Controller
         
         $userId = Auth::id();
         $user = User::where('id',$userId)->with('estandes')->get()->first();
-        $user->estandes()->attach($estande);
+        
+        if(!$user->estandes->contains($estande)){
+            $user->estandes()->attach($estande);
+        }
+        
 
         return redirect("/estande/$estandeId")->with('status', 'Estande cadastrado com sucesso!');
     }
