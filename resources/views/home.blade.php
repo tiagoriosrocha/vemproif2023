@@ -13,7 +13,7 @@
           <br>
           <p>
             <a class="btn btn-outline-dark btn-lg" href="/login" role="button">Login</a> 
-            <a class="btn btn-outline-dark btn-lg" href="/register" role="button">Registre-se</a>
+            <a class="btn btn-outline-dark btn-lg" href="/registro" role="button">Registre-se</a>
           </p>
         </div>
       </div>

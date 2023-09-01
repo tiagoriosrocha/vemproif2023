@@ -22,7 +22,8 @@ class UserForm extends Component
     protected $rules = [
         'nome' => 'required|min:6',
         'email' => 'required|email',
-        'telefone' => 'required|numeric|digits:9',
+        //'telefone' => 'required|numeric|digits:9',
+        'telefone' => 'required',
     ];
 
     protected $msgs = [
@@ -31,8 +32,8 @@ class UserForm extends Component
         'email.required' => 'Campo obrigatório',
         'email.email' => 'Formato de e-mail incorreto',
         'telefone.required' => "Campo Obrigatório",
-        'telefone.numeric' => "Digite somente números",
-        'telefone.digits' => 'Mínimo 9 dígitos'
+        //'telefone.numeric' => "Digite somente números",
+        //'telefone.digits' => 'Mínimo 9 dígitos'
     ];
 
     public function updated($propertyName)
