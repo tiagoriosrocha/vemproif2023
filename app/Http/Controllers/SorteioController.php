@@ -10,6 +10,7 @@ class SorteioController extends Controller
 {
     public function show(){
         $listaUsuarios = User::with('estandes')->orderBy('name','asc')->simplePaginate(10);
+        //dd($listaUsuarios);
         $listaEstandes = Estande::all();
         return view('sorteio.show',["listaUsuarios" => $listaUsuarios,
                                     "listaEstandes" => $listaEstandes]);

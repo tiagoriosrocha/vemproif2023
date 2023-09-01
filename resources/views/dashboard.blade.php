@@ -30,7 +30,11 @@
 
         <div class="dropdown text-end">
           <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="/images/{{ Auth::user()->imagem }}" alt="mdo" width="32" height="32" class="rounded-circle">
+            @if(Auth::user()->imagem)
+              <img src="{{ asset('storage/images/' . Auth::user()->imagem); }}" alt="mdo" width="32" height="32" class="rounded-circle">
+            @else
+              <img src="/images/user-default.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            @endif
           </a>
           <ul class="dropdown-menu text-small">
             <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Perfil</a></li>
