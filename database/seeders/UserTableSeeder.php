@@ -32,7 +32,6 @@ class UserTableSeeder extends Seeder
         $umUsuario->name = "Tiago Rios da Rocha";
         $umUsuario->email = 'tiagoriosrocha@gmail.com';
         $umUsuario->password = Hash::make('password');
-        $umUsuario->imagem = '1-202308302322perfil.jpg';
         $umUsuario->save();
         
         //crio 10 usuários no banco

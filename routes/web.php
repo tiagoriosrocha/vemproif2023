@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::get('validarpresenca/{id}', [EstandeController::class, 'validarpresenca'])->name('estande.validarpresenca');    
 });
 
-Route::get('/ranking', [SorteioController::class, 'show'])->name('sorteio.ranking');    
+Route::get('/ranking', [SorteioController::class, 'exibirRanking'])->name('sorteio.ranking');    
 Route::get('/executarsorteio',[SorteioController::class, 'executarSorteio'])->name('sorteio.executar');
 
 

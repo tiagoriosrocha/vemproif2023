@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class SorteioController extends Controller
 {
-    public function show(){
+    public function exibirRanking(){
         $listaUsuarios = User::with('estandes')->orderBy('name','asc')->simplePaginate(10);
         //dd($listaUsuarios);
         $listaEstandes = Estande::all();
-        return view('sorteio.show',["listaUsuarios" => $listaUsuarios,
+        return view('sorteio.exibir_ranking',["listaUsuarios" => $listaUsuarios,
                                     "listaEstandes" => $listaEstandes]);
     }
 
@@ -31,7 +31,7 @@ class SorteioController extends Controller
         $listaSorteada = $listaAptos->shuffle();
         $listaSorteada = $listaAptos->shuffle();
         
-        return view('sorteio.resultado', ["listaAptos" => $listaAptos,
+        return view('sorteio.exibir_sorteados', ["listaAptos" => $listaAptos,
                                           "listaSorteada" => $listaSorteada]);
     }
 }
