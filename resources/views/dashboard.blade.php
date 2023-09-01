@@ -2,6 +2,17 @@
 
 @section('content')
 
+    @if(\Session::has('success'))
+      <div class="row">
+        <div class="col-12">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Parabéns!</strong> {{ \Session::get('success') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        </div>
+      </div>
+    @endif
+
     <div class="row">
     <div class="p-5 text-center bg-body-tertiary">
         <div class="container py-5">
@@ -103,5 +114,5 @@
             </div>
     @endforeach 
   </div>
-  
+
 @endsection

@@ -39,6 +39,6 @@ class UploadFoto extends Component
             $user->save();
         }
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('success','Imagem cadastrada com sucesso!');
     }
 }
