@@ -27,23 +27,8 @@
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="/dashboard" class="nav-link px-2 link-secondary">Dashboard</a></li>
+          <li><a href="/" class="nav-link px-2 link-secondary">Home</a></li>
         </ul>
-
-        <div class="dropdown text-end">
-          <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="/images/user-default.png" alt="mdo" width="32" height="32" class="rounded-circle">
-          </a>
-          <ul class="dropdown-menu text-small">
-            <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Perfil</a></li>
-            <li><a class="dropdown-item" href="{{ route('profile.imageform') }}">Trocar Foto</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <form id="logout-form" action="{{ url('logout') }}" method="POST">
-            {{ csrf_field() }}
-            <li><button class="btn" type="submit">Logout</button></li>
-            </form>
-          </ul>
-        </div>
       </div>
     </div>
   </header>
@@ -57,19 +42,7 @@
     -->
     <div class="container my-5"> 
          
-      @if(\Session::has('success'))
-      <div class="row">
-        <div class="col-12">
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          <strong>Parabéns!</strong> {{ \Session::get('success') }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        </div>
-      </div>
-      @endif
-    
-    
-      <!------------------------------------------------------------
+        <!------------------------------------------------------------
           ------------------------------------------------------------
           AQUI EU CRIO UMA LINHA (ROW) DO BOOTSTRAP
           E COLOCO UM TÍTULO DA PÁGINA
@@ -77,30 +50,18 @@
           ------------------------------------------------------------ 
         -->
         <div class="row">
-            <div class="col-md-12 mb-5">
-                <h2 class="pb-2 border-bottom">Faça upload da foto do seu perfil</h2>
+            <div class="col-md-12 mb-5 text-center">
+                <img class="mb-4" width="250" src="logo-pq.png" />  
+                <h2 class="pb-2 border-bottom">Cadastro de Visitante</h2>
             </div>
         </div> <!-- FIM DA ROW -->
 
         <div class="row">
           <div class="col-md-12 col-sm-12 mb-2 text-center">
-              <livewire:upload-foto />
+            <livewire:user-form />
           </div>
         </div>
 
-        
-        
-        <!-- <div class="row "> 
-            <div class="col-md-12 col-sm-12 mb-2 text-center">
-                    <form method="POST" action="{{ route('image.uploadfoto') }}" enctype="multipart/form-data">
-                        @csrf
-                        <input type="file" class="form-control" name="image" />
-                        <br>
-                        <br>
-                        <button type="submit" class="btn btn-lg btn-primary">Enviar</button>
-                    </form>
-            </div>
-        </div> -->
     </div> <!-- FIM DO CONTENT -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

@@ -6,9 +6,7 @@
     <title>{{ config('app.name', '#VEMPROIF-2023') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="styles.css">
-    <livewire:styles />
   </head>
   <body>
     
@@ -23,7 +21,7 @@
     <div class="container-fluid">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <a class="navbar-brand" href="{{ route('dashboard') }}">
-            <img src="/logo-pq-sm.png" />
+            <img src="logo-pq-sm.png" />
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -32,7 +30,11 @@
 
         <div class="dropdown text-end">
           <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="/images/user-default.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            @if(Auth::user()->imagem)
+              <img src="{{ asset('storage/images/' . Auth::user()->imagem); }}" alt="mdo" width="32" height="32" class="rounded-circle">
+            @else
+              <img src="/images/user-default.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            @endif
           </a>
           <ul class="dropdown-menu text-small">
             <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Perfil</a></li>
@@ -55,57 +57,12 @@
       ------------------------------------------------------------
       ------------------------------------------------------------ 
     -->
-    <div class="container my-5"> 
-         
-      @if(\Session::has('success'))
-      <div class="row">
-        <div class="col-12">
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          <strong>Parabéns!</strong> {{ \Session::get('success') }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        </div>
-      </div>
-      @endif
-    
-    
-      <!------------------------------------------------------------
-          ------------------------------------------------------------
-          AQUI EU CRIO UMA LINHA (ROW) DO BOOTSTRAP
-          E COLOCO UM TÍTULO DA PÁGINA
-          ------------------------------------------------------------
-          ------------------------------------------------------------ 
-        -->
-        <div class="row">
-            <div class="col-md-12 mb-5">
-                <h2 class="pb-2 border-bottom">Faça upload da foto do seu perfil</h2>
-            </div>
-        </div> <!-- FIM DA ROW -->
-
-        <div class="row">
-          <div class="col-md-12 col-sm-12 mb-2 text-center">
-              <livewire:upload-foto />
-          </div>
-        </div>
-
-        
-        
-        <!-- <div class="row "> 
-            <div class="col-md-12 col-sm-12 mb-2 text-center">
-                    <form method="POST" action="{{ route('image.uploadfoto') }}" enctype="multipart/form-data">
-                        @csrf
-                        <input type="file" class="form-control" name="image" />
-                        <br>
-                        <br>
-                        <button type="submit" class="btn btn-lg btn-primary">Enviar</button>
-                    </form>
-            </div>
-        </div> -->
+    <div class="container-fluid"> 
+        @yield('content')
     </div> <!-- FIM DO CONTENT -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="main.js"></script>
-    <livewire:scripts />
+    
   </body>
 </html>
-
