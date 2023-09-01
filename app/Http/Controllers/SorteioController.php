@@ -8,14 +8,6 @@ use Illuminate\Http\Request;
 
 class SorteioController extends Controller
 {
-    public function exibirRanking(){
-        $listaUsuarios = User::with('estandes')->orderBy('name','asc')->simplePaginate(10);
-        //dd($listaUsuarios);
-        $listaEstandes = Estande::all();
-        return view('sorteio.exibir_ranking',["listaUsuarios" => $listaUsuarios,
-                                    "listaEstandes" => $listaEstandes]);
-    }
-
     public function executarSorteio(){
         $listaUsuarios = User::with('estandes')->orderBy('name','asc')->get();
         $listaEstandes = Estande::all();

@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
-use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -59,27 +58,4 @@ class ProfileController extends Controller
         return Redirect::to('/');
     }
 
-    public function imageform(){
-        return view('profile.carregarfoto');
-    }
-
-    public function uploadfoto(Request $request){
-        $this->validate($request, [
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-        ]);
-
-        if($request->file('image')){
-            $userId = Auth::id();
-            $user = User::find($userId);
-            
-            $file= $request->file('image');
-            $filename= $user->id . '-' . date('YmdHi') . '-' . $file->getClientOriginalName();
-            $file->move(public_path('/images'), $filename);
-            
-            $user->imagem = $filename;
-            $user->save();
-        }
-
-        return redirect()->route('dashboard');
-    }
 }
