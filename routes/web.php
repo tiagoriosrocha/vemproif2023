@@ -19,7 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::delete('/meuid', [ProfileController::class, 'gerarID'])->name('profile.meuid');
+    Route::get('/meuid', [ProfileController::class, 'gerarID'])->name('profile.meuid');
 
     Route::get('/imageform', [UsuarioController::class, 'imageform'])->name('profile.imageform');
     Route::post('/image', [UsuarioController::class,'uploadfoto'])->name('image.uploadfoto');

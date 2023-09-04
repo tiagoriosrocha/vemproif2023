@@ -59,11 +59,12 @@ class ProfileController extends Controller
         return Redirect::to('/');
     }
 
-    public function meuID(){
+    public function gerarID(){
         $userId = Auth::id();
-        $user = User::where('id',$userId)->with('estandes')->get()->first();
-
-        return view('profile.meuid');
+        $user = User::where('id',$userId)->get()->first();
+        $time = $user->time;
+        return view('profile.meuid', ['id' => $userId,
+                                      'time' => $time]);
     }
 
 }
