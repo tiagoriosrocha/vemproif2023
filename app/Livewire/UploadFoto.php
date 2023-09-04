@@ -23,6 +23,7 @@ class UploadFoto extends Component
  
     public function save()
     {
+        sleep(2);
         $this->validate([
             'photo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048', // 1MB Max
         ]);

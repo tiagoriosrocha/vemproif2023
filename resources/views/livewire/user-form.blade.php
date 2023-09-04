@@ -74,9 +74,23 @@
         </div>
     </div>
 
+    <div class="form-group row mb-3">
+        <label for="time" class="col-3 col-form-label">Time</label> 
+        <div class="col-9">   
+            <select id="time" class="form-select" name="time">
+                <option>Grêmio</option>
+                <option>Internacional</option>
+                <option>Outro/Nenhum</option>
+            </select>
+        </div>
+    </div>
+
     <div class="form-group row">
         <div class="col-12">
-        <button name="submit" type="submit" class="btn btn-dark">Cadastrar</button>
+        <button name="submit" type="submit" class="btn btn-dark">
+            <div wire:loading.delay class="spinner-border" role="status"></div>    
+            Cadastrar
+        </button>
         </div>
     </div>
 </form>

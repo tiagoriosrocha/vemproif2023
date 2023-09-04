@@ -32,13 +32,16 @@ class UserTableSeeder extends Seeder
         $umUsuario->name = "Tiago Rios da Rocha";
         $umUsuario->email = 'tiagoriosrocha@gmail.com';
         $umUsuario->password = Hash::make('password');
+        $umUsuario->time = 'Grêmio';
         $umUsuario->save();
         
         //crio 10 usuários no banco
+        $times = ['Grêmio', "Iternacional"];
         for($i=0; $i<10; $i++){
             $umUsuario = new User();
             $umUsuario->name = $faker->name();
             $umUsuario->email = $faker->unique()->safeEmail();
+            $umUsuario->time =  $times[rand(0,1)];
             $umUsuario->password = Hash::make('password');
             $umUsuario->save();
         }

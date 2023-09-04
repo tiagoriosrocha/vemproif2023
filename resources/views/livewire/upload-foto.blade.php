@@ -7,5 +7,8 @@
     <input type="file" class="form-control" wire:model="photo">
     @error('photo') <span class="error">{{ $message }}</span> @enderror
     <br>
-    <button type="submit" class="btn btn-lg btn-primary">Salvar Foto</button>
+    <button type="submit" class="btn btn-lg btn-primary"> 
+        <div wire:loading class="spinner-border" role="status"></div>    
+        Salvar Foto
+    </button>
 </form>

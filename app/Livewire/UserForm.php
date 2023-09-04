@@ -18,6 +18,7 @@ class UserForm extends Component
     public $escola;
     public $serie;
     public $turno;
+    public $time;
 
     protected $rules = [
         'nome' => 'required|min:6',
@@ -43,6 +44,7 @@ class UserForm extends Component
 
     public function salvar()
     {
+        sleep(2);
         $validatedData = $this->validate($this->rules,$this->msgs);
         
         $user = User::create([
@@ -51,6 +53,7 @@ class UserForm extends Component
             'telefone' => $this->telefone,
             'escola' => $this->escola,
             'cidade' => $this->cidade,
+            'time' => $this->time,
             'ano_serie' => $this->serie,
             'turno' => $this->turno,
             'password' => Hash::make('password'),

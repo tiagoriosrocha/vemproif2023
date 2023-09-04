@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('imagem')->nullable();
             $table->string('telefone')->nullable();
             $table->string('escola')->nullable();
+            $table->string('time')->nullable();
             $table->string('cidade')->nullable();
             $table->string('ano_serie')->nullable();
             $table->string('turno')->nullable();
